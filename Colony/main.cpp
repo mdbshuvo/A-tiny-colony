@@ -1263,7 +1263,7 @@ int main(int argc, char *argv[])
     glutInitWindowPosition(30,30);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 
-    glutCreateWindow("GLUT Shapes");
+    glutCreateWindow("A Tiny Colony");
 
     glutDisplayFunc(display);
     glutKeyboardFunc(key);
