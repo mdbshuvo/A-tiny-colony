@@ -588,3 +588,25 @@
 	"furnitures.h"
 	"collision_detection.h"
 
+1651427024 source:h:\something\important\projects\cse 4208\a-tiny-colony\colony\main.cpp
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+	<math.h>
+	<cmath>
+	<time.h>
+	<bits/stdc++.h>
+	"BmpLoader.h"
+	<string>
+	<iostream>
+	"primitives.h"
+	"furnitures.h"
+	"enums.h"
+	"collision_detection.h"
+	"room_related.h"
+	"forest.h"
+	"primitive_curve.h"
+

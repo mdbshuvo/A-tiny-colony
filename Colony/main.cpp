@@ -305,7 +305,7 @@ void sky(float rad=500, float rot=90)
     glDisable(GL_TEXTURE_2D);
 }
 
-void roads( float rd_length=500, float rd_width=20)
+void roads( float rd_length=500, float rd_width=20, bool mirrored=false)
 {
     float rd_height=0.1;
     float block_size=5, width_block=rd_width/block_size, length_block=rd_length/block_size;
@@ -313,49 +313,52 @@ void roads( float rd_length=500, float rd_width=20)
     street_lamp(0.5,0.2,20,15, GL_LIGHT6,light1, rd_length/4,0,rd_width/2,90);
     street_lamp(0.5,0.2,20,15, GL_LIGHT7,light1, -rd_length/4,0,rd_width/2,90);
 
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, texture_ids[ROAD2]);
-
-    glPushMatrix();
-    for(int i=-width_block/2; i<=width_block/2; i++)
+    if(!mirrored)
     {
-        for(int j=-length_block/2; j<length_block/2; j++)
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, texture_ids[ROAD2]);
+
+        glPushMatrix();
+        for(int i=-width_block/2; i<=width_block/2; i++)
         {
-            glPushMatrix();
-            glTranslatef(i*block_size,0,j*block_size);
-            glScalef(block_size, rd_height, block_size);
-            glTranslatef(-0.5,0,-0.5);
-            cube(0.5,0.5,0.5);
-            glPopMatrix();
+            for(int j=-length_block/2; j<length_block/2; j++)
+            {
+                glPushMatrix();
+                glTranslatef(i*block_size,0,j*block_size);
+                glScalef(block_size, rd_height, block_size);
+                glTranslatef(-0.5,0,-0.5);
+                cube(0.5,0.5,0.5);
+                glPopMatrix();
+            }
         }
-    }
-    glPopMatrix();
+        glPopMatrix();
 
-    glPushMatrix();
-    glRotatef(90, 0,1,0);
+        glPushMatrix();
+        glRotatef(90, 0,1,0);
 
-    for(int i=-width_block/2; i<=width_block/2; i++)
-    {
-        for(int j=-length_block/2; j<length_block/2; j++)
+        for(int i=-width_block/2; i<=width_block/2; i++)
         {
-            glPushMatrix();
-            glTranslatef(i*block_size,0,j*block_size);
-            glScalef(block_size, rd_height, block_size);
-            glTranslatef(-0.5,0,-0.5);
-            cube(0.5,0.5,0.5);
-            glPopMatrix();
+            for(int j=-length_block/2; j<length_block/2; j++)
+            {
+                glPushMatrix();
+                glTranslatef(i*block_size,0,j*block_size);
+                glScalef(block_size, rd_height, block_size);
+                glTranslatef(-0.5,0,-0.5);
+                cube(0.5,0.5,0.5);
+                glPopMatrix();
+            }
         }
+        glPopMatrix();
+
+    //    glPushMatrix();
+    //    glRotatef(90, 0,1,0);
+    //    glScalef(rd_width, rd_height*1.5, rd_length);
+    //    glTranslatef(-0.5,0,-0.5);
+    //    cube(0.5,0.5,0.5,false,128, rd_width,rd_height*1.5,rd_length, texture_size[ROAD2]);
+    //    glPopMatrix();
+
+        glDisable(GL_TEXTURE_2D);
     }
-    glPopMatrix();
-
-//    glPushMatrix();
-//    glRotatef(90, 0,1,0);
-//    glScalef(rd_width, rd_height*1.5, rd_length);
-//    glTranslatef(-0.5,0,-0.5);
-//    cube(0.5,0.5,0.5,false,128, rd_width,rd_height*1.5,rd_length, texture_size[ROAD2]);
-//    glPopMatrix();
-
-    glDisable(GL_TEXTURE_2D);
 }
 
 void forest(float posX=0, float posY=0, float posZ=0, bool mirrored=false)
@@ -450,7 +453,7 @@ void building_1(float posX=0, float posY=0, float posZ=0, texture_id wall_tex=WA
     room(posX-45,posY-1,posZ-5, 60,120, false,false,0,false,false,0, false,false,false,false, true,false,false,false, fence_height,1, TILE2,FENCE1);
 }
 
-void school(float posX=0, float posY=0, float posZ=0)
+void school(float posX=0, float posY=0, float posZ=0, bool mirrored=false)
 {
     float mid_wall=50, side_wall=15, cls_width=mid_wall+2*side_wall, cor_len=15, cls_len=50, cor_height=5;
     float str_room_width=40, str_width=20, str_room_len=40;
@@ -461,7 +464,7 @@ void school(float posX=0, float posY=0, float posZ=0)
     float fence_width=2*num_cls_rm*cls_width+str_room_width+extra_gap, fence_length=cls_len+cor_len+field_len+2*extra_gap;
     float field_width=250, front_half_fence=(fence_width-fence_door_gap)/2;
 
-    room(posX,posY-1,posZ, fence_width,fence_length, false,false,0, false,false,0,false,false,false,false, false,true,true,true, fence_height,1, NONE,BRICK);
+    if(!mirrored) room(posX,posY-1,posZ, fence_width,fence_length, false,false,0, false,false,0,false,false,false,false, false,true,true,true, fence_height,1, NONE,BRICK);
     room(posX-(front_half_fence+fence_door_gap)/2,posY-1,posZ, front_half_fence,fence_length, false,false,0, false,false,0,false,false,false,false, true,false,false,false, fence_height,1, NONE,BRICK);
     room(posX+(front_half_fence+fence_door_gap)/2,posY-1,posZ, front_half_fence,fence_length, false,false,0, false,false,0,false,false,false,false, true,false,false,false, fence_height,1, NONE,BRICK);
 
@@ -474,8 +477,8 @@ void school(float posX=0, float posY=0, float posZ=0)
     // field
     float field_z_tr=45;
 
-    field(field_width/2,1,field_len, posX-extra_gap-field_width/4,posY+0.1,posZ+field_z_tr, FOOTBALL_FIELD_1_LH);
-    field(field_width/2,1,field_len, posX-extra_gap+field_width/4,posY+0.1,posZ+field_z_tr, FOOTBALL_FIELD_1_RH);
+    if(!mirrored) field(field_width/2,1,field_len, posX-extra_gap-field_width/4,posY+0.1,posZ+field_z_tr, FOOTBALL_FIELD_1_LH);
+    if(!mirrored) field(field_width/2,1,field_len, posX-extra_gap+field_width/4,posY+0.1,posZ+field_z_tr, FOOTBALL_FIELD_1_RH);
     goal_post(20,10,0.5, posX-extra_gap-(field_width/2-15.86),posY,posZ+field_z_tr, 90);
     goal_post(20,10,0.5, posX-extra_gap+(field_width/2-15.5),posY,posZ+field_z_tr, 90);
 
@@ -500,15 +503,15 @@ void school(float posX=0, float posY=0, float posZ=0)
             room(posX+rPosX,posY+i*floor_height,rPosZ, mid_wall,cls_len, false,true,0,true,true,10, false,false,false,false, true,false,true,false, -1,1, FLOOR1,TILE2);
             room(posX+rPosX+(mid_wall+side_wall)/2,posY+i*floor_height,rPosZ, side_wall,cls_len, false,true,0,false,false,10, true,false,false,false, true,true,true,false, -1,1, FLOOR1,TILE2);
             room(posX+rPosX-(mid_wall+side_wall)/2,posY+i*floor_height,rPosZ, side_wall,cls_len, false,true,0,false,false,10, true,false,false,false, true,false,true,true, -1,1, FLOOR1,TILE2);
-            if(str_flr && j==0) furniture_settings_4(posX+rPosX,posY+i*floor_height+1,rPosZ, cls_len,cls_width,90);
-            else furniture_settings_3(posX+rPosX,posY+i*floor_height+1,rPosZ, cls_width,cls_len,0);
+            if(str_flr && j==0 && !mirrored) furniture_settings_4(posX+rPosX,posY+i*floor_height+1,rPosZ, cls_len,cls_width,90);
+            else if(!mirrored) furniture_settings_3(posX+rPosX,posY+i*floor_height+1,rPosZ, cls_width,cls_len,0);
 
             room(posX+rPosX,posY+i*floor_height,rPosZ+(cls_len+cor_len)/2, cls_width,cor_len,false,true,0,false,false,10, false,false,false,false, true,last_cls,false,false, cor_height,1, FLOOR1,FLOOR1);
 
             room(posX-rPosX,posY+i*floor_height,rPosZ, mid_wall,cls_len, false,true,0,true,true,10, false,false,false,false, true,false,true,false, -1,1, FLOOR1,TILE2);
             room(posX-rPosX+(mid_wall+side_wall)/2,posY+i*floor_height,rPosZ, side_wall,cls_len, false,true,0,false,false,10, true,false,false,false, true,true,true,false, -1,1, FLOOR1,TILE2);
             room(posX-rPosX-(mid_wall+side_wall)/2,posY+i*floor_height,rPosZ, side_wall,cls_len, false,true,0,false,false,10, true,false,false,false, true,false,true,true, -1,1, FLOOR1,TILE2);
-            furniture_settings_3(posX-rPosX,posY+i*floor_height+1,rPosZ, cls_width,cls_len,0);
+            if(!mirrored) furniture_settings_3(posX-rPosX,posY+i*floor_height+1,rPosZ, cls_width,cls_len,0);
 
             room(posX-rPosX,posY+i*floor_height,rPosZ+(cls_len+cor_len)/2, cls_width,cor_len,false,true,0,false,false,10, false,false,false,false, true,false,false,last_cls, cor_height,1, FLOOR1,FLOOR1);
             last_cls=false;
@@ -523,7 +526,7 @@ void school(float posX=0, float posY=0, float posZ=0)
     room(posX-(num_cls_rm*cls_width+str_room_width)/2,posY+storied*floor_height,fPosZ, num_cls_rm*cls_width,str_room_len, false,true,0,false,false,0, false,false,false,false, true,false,false,true, 5,1, FLOOR1,FLOOR1);
 
     float back_r_len=cls_len+cor_len-str_room_len;
-    room(posX,posY+storied*floor_height,fPosZ-(str_room_len+back_r_len)/2, 2*num_cls_rm*cls_width+str_room_width,back_r_len, false,true,0,false,false,0, false,false,false,false, false,true,true,true, 5,1, FLOOR1,FLOOR1);
+    if(!mirrored) room(posX,posY+storied*floor_height,fPosZ-(str_room_len+back_r_len)/2, 2*num_cls_rm*cls_width+str_room_width,back_r_len, false,true,0,false,false,0, false,false,false,false, false,true,true,true, 5,1, FLOOR1,FLOOR1);
 
 }
 
@@ -542,9 +545,10 @@ void the_scene()
         light(GL_LIGHT3, sun_x,sun_y,sun_z, false,15,0.2,0,cur_sun_light_intensity);
 
         sky(750);
-//        roads(500);
+        roads(500, 20, true);
         forest(-15,0,15, true);
         building_1(-95,0,-80,WALL2,true);
+        school(220,0,-170, true);
         glPopMatrix();
     }
 
