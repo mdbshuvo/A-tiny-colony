@@ -11,6 +11,8 @@ In editor mode users can create and save their own curved objects. To enable edi
 + Windows 7 or higher
 + glut version 3.7.6 or higher
 
+Instruction for setup can be found [here](https://www.codewithc.com/how-to-setup-opengl-glut-in-codeblocks).
+
 # Some Screenshots
 A birds eye view of the total space.
 ![Birds-eye-view](demo-images/birds-eye-view.jpg)
