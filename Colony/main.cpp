@@ -46,7 +46,7 @@ int wndw_rot=0;
 float inter_wndw_rot=0;
 float sky_rot=0;
 
-bool wired=false, editor_mode=false;
+bool wired=false, editor_mode=false, reflection_needed=true;
 bool light1=true, light2=false, light3=false;
 bool target_on=true,fan_on=true;
 bool drone_effect=false, state[256];
@@ -358,7 +358,7 @@ void roads( float rd_length=500, float rd_width=20)
     glDisable(GL_TEXTURE_2D);
 }
 
-void forest(float posX=0, float posY=0, float posZ=0)
+void forest(float posX=0, float posY=0, float posZ=0, bool mirrored=false)
 {
     int row=6, column=7, tree_type=4;
     float tree_width=5, tree_height=25, bush_width=20, bush_height=10;
@@ -388,6 +388,9 @@ void forest(float posX=0, float posY=0, float posZ=0)
             if(seed==0) tree_1(tree_width,tree_height,bush_width,bush_height, posX-j*dist_trees-dist_trees/2,0,posZ+i*dist_trees+dist_trees/2);
             else if(seed==1) tree_2(tree_width,tree_height,bush_width,bush_height, posX-j*dist_trees-dist_trees/2,0,posZ+i*dist_trees+dist_trees/2);
             else if(seed==2) tree_3(tree_width,2*tree_height+(rand()%10),2*bush_width,3*bush_height, posX-j*dist_trees-dist_trees/2,0,posZ+i*dist_trees+dist_trees/2);
+
+            // if mirrored don't draw all trees
+            if(mirrored & (j>1)) break;
         }
     }
 }
@@ -412,16 +415,16 @@ void building_1(float posX=0, float posY=0, float posZ=0, texture_id wall_tex=WA
     for(int i=0; i<f; i++)
     {
         room(posX-40,posY+i*floor_height,posZ,40,40,roof_r,true,0,true,true,10,false,true,true,false, true,true,true,true, -1,1, TILE2,wall_tex);
-        furniture_settings_1(posX-40,posY+i*floor_height+1,posZ,40,40,0);
-        stair_room(posX,posY+i*floor_height,posZ,20,40,1,40,flr_st,0, TILE2,wall_tex);
+        if(!mirrored) furniture_settings_1(posX-40,posY+i*floor_height+1,posZ,40,40,0);
+        if(!mirrored) stair_room(posX,posY+i*floor_height,posZ,20,40,1,40,flr_st,0, TILE2,wall_tex);
         room(posX+40,posY+i*floor_height,posZ,40,40,roof_r,true,0,true,true,10,false,false,true,true, true,true,true,true, -1,1, TILE2,wall_tex);
         if(flr_st) top_wall_light(GL_LIGHT4,light1, 1,0.5, posX,posY+(i+1)*floor_height,posZ+15);
-        furniture_settings_1(posX+40,posY+i*floor_height+1,posZ,40,40,90);
+        if(!mirrored) furniture_settings_1(posX+40,posY+i*floor_height+1,posZ,40,40,90);
 
-        room(posX-30,posY+i*floor_height,posZ-40,60,40,roof_r,true,0,true,true,10,false,false,false,false, false,false,true,true, -1,1, TILE2,wall_tex);
-        furniture_settings_2(posX-30,posY+i*floor_height+1,posZ-40,60,40, mirrored);
+        if(!mirrored) room(posX-30,posY+i*floor_height,posZ-40,60,40,roof_r,true,0,true,true,10,false,false,false,false, false,false,true,true, -1,1, TILE2,wall_tex);
+        if(!mirrored) furniture_settings_2(posX-30,posY+i*floor_height+1,posZ-40,60,40, mirrored);
+        if(!mirrored) furniture_settings_2(posX+30,posY+i*floor_height+1,posZ-40,60,40, mirrored);
         room(posX+30,posY+i*floor_height,posZ-40,60,40,roof_r,true,0,true,true,10,false,false,false,false, false,true,true,false, -1,1, TILE2,wall_tex);
-        furniture_settings_2(posX+30,posY+i*floor_height+1,posZ-40,60,40, mirrored);
 
         wall(posX,posY+i*floor_height,posZ-40,90,60,floor_height,40,1, false,false,0,0, false,0,0, wall_tex);
         if(floor_calculation) add_floor_height(posX,posY,posZ, 0,i*floor_height,-40, 1,floor_height,40);
@@ -437,13 +440,13 @@ void building_1(float posX=0, float posY=0, float posZ=0, texture_id wall_tex=WA
 
     float roof_r_height=5;
     room(posX+40,posY+f*floor_height,posZ, 40,40,false,true,0,false,false,0,false,false,false,false, true,true,false,false,roof_r_height,1, TILE2,wall_tex);
-    room(posX-40,posY+f*floor_height,posZ, 40,40,false,true,0,false,false,0,false,false,false,false, true,false,false,true,roof_r_height,1, TILE2,wall_tex);
+    if(!mirrored) room(posX-40,posY+f*floor_height,posZ, 40,40,false,true,0,false,false,0,false,false,false,false, true,false,false,true,roof_r_height,1, TILE2,wall_tex);
     room(posX,posY+f*floor_height,posZ-40, 120,40,false,true,0,false,false,0,false,false,false,false, false,true,true,true,roof_r_height,1, TILE2,wall_tex);
 
     // fence
     float fence_height=10;
     room(posX,posY-1,posZ-5, 150,120, false,false,0,false,false,0, false,false,false,false, false,true,true,true, fence_height,1, TILE2,FENCE1);
-    room(posX+45,posY-1,posZ-5, 60,120, false,false,0,false,false,0, false,false,false,false, true,false,false,false, fence_height,1, TILE2,FENCE1);
+    if(!mirrored) room(posX+45,posY-1,posZ-5, 60,120, false,false,0,false,false,0, false,false,false,false, true,false,false,false, fence_height,1, TILE2,FENCE1);
     room(posX-45,posY-1,posZ-5, 60,120, false,false,0,false,false,0, false,false,false,false, true,false,false,false, fence_height,1, TILE2,FENCE1);
 }
 
@@ -530,7 +533,7 @@ void the_scene()
 {
     // reflection
 
-    if(!wired)
+    if(reflection_needed & !wired)
     {
         glPushMatrix();
         glScalef(1,-1,1);
@@ -539,9 +542,9 @@ void the_scene()
         light(GL_LIGHT3, sun_x,sun_y,sun_z, false,15,0.2,0,cur_sun_light_intensity);
 
         sky(750);
-        roads(500);
-        forest(-15,0,15);
-        building_1(-95,0,-80,WALL2);
+//        roads(500);
+        forest(-15,0,15, true);
+        building_1(-95,0,-80,WALL2,true);
         glPopMatrix();
     }
 
@@ -1139,6 +1142,19 @@ static void idle(void)
 
         }
     }
+
+
+    // pond reflection toggle
+    // for reference
+    // void pond(float posX=0, float posY=0, float posZ=0, float pond_width=50, float pond_length=50, float border_width=5, float border_height=1, float pond_height=0.2)
+    // pond(120,0,140, 200,250,10,1);
+
+//    float refEnRange = 30;
+//    float reflXStart = /*120 - (200/2)*/ 20 - refEnRange, reflXStop = /*120 + (200/2)*/ 220 + refEnRange;
+//    float reflZStart = /*140 - (250/2)*/ 15 - refEnRange, reflZStop = /*140 + (250/2)*/ 265 + refEnRange;
+//
+//    if(((reflXStart <= eyeX) & (eyeX < reflXStop)) & ((reflZStart <= eyeZ) & (eyeZ < reflZStop))) reflection_needed = true;
+//    else reflection_needed = false;
 
     glutPostRedisplay();
 }
