@@ -22,3 +22,5 @@ Beside the forest at night.
 ![night-by-the-forest](demo-images/night-by-the-forest.jpg)
 The setting sun and it's reflection on the pond water.
 ![sun-set](demo-images/sun-set.jpg)
+Yet another reflection at dawn.
+![lake-side-dawn](demo-images/lake_at_dawn.jpg)
