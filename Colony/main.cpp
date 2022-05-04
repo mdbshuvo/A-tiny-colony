@@ -6,7 +6,7 @@
 #include <windows.h>
 #include <math.h>
 #include <cmath>
-#include<time.h>
+#include <time.h>
 #include <bits/stdc++.h>
 #include "BmpLoader.h"
 #include <string>
