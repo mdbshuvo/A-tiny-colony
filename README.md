@@ -7,6 +7,8 @@ The agent can be controlled by the keyboard. The keys **wasd** controls where th
 ## Editor mode
 In editor mode users can create and save their own curved objects. To enable editor mode the user have to press **e** and to start/restart and stop selecting control points for the curved surfaces the user have to press **p** (the control points refer to the control points of a Bezier curve). The key **P** can be used to save the current coordinates to a text file (the file name has to be entered on the console). 
 
+A demonstration video can be found here: https://github.com/mdbshuvo/A-tiny-colony
+
 # Requirements
 + Windows 7 or higher
 + glut version 3.7.6 or higher
