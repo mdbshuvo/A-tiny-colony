@@ -2,6 +2,50 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="BmpLoader.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="771" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="enums.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="forest.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2067" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="6" />
+		</Folding>
+	</File>
+	<File name="primitives.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="165" topLine="48" />
+		</Cursor>
+		<Folding>
+			<Collapse line="6" />
+			<Collapse line="20" />
+			<Collapse line="32" />
+			<Collapse line="51" />
+		</Folding>
+	</File>
+	<File name="furnitures.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="25825" topLine="53" />
+		</Cursor>
+		<Folding>
+			<Collapse line="6" />
+			<Collapse line="46" />
+			<Collapse line="66" />
+		</Folding>
+	</File>
+	<File name="collision_detection.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="84" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="room_related.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1480" topLine="6" />
@@ -18,73 +62,20 @@
 			<Collapse line="48" />
 		</Folding>
 	</File>
-	<File name="primitives.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1302" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="BmpLoader.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="771" topLine="18" />
-		</Cursor>
-	</File>
-	<File name="primitives.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="165" topLine="48" />
-		</Cursor>
-		<Folding>
-			<Collapse line="6" />
-			<Collapse line="20" />
-			<Collapse line="32" />
-			<Collapse line="51" />
-		</Folding>
-	</File>
 	<File name="BmpLoader.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="61" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="enums.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="collision_detection.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7" topLine="0" />
+			<Cursor1 position="137" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="forest.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="primitives.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="655" topLine="10" />
+			<Cursor1 position="1302" topLine="0" />
 		</Cursor>
-	</File>
-	<File name="furnitures.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="25825" topLine="53" />
-		</Cursor>
-		<Folding>
-			<Collapse line="6" />
-			<Collapse line="46" />
-			<Collapse line="66" />
-			<Collapse line="83" />
-			<Collapse line="100" />
-			<Collapse line="112" />
-			<Collapse line="144" />
-			<Collapse line="245" />
-			<Collapse line="393" />
-			<Collapse line="446" />
-			<Collapse line="505" />
-			<Collapse line="536" />
-			<Collapse line="544" />
-			<Collapse line="549" />
-			<Collapse line="555" />
-			<Collapse line="560" />
-			<Collapse line="593" />
-			<Collapse line="654" />
-			<Collapse line="706" />
-			<Collapse line="725" />
-			<Collapse line="776" />
-			<Collapse line="820" />
-			<Collapse line="846" />
-			<Collapse line="878" />
-			<Collapse line="931" />
-		</Folding>
 	</File>
 	<File name="primitive_curve.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
@@ -99,42 +90,98 @@
 			<Collapse line="78" />
 		</Folding>
 	</File>
-	<File name="collision_detection.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="forest.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="84" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="forest.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2067" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="6" />
-		</Folding>
-	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1810" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="81" />
-			<Collapse line="98" />
-			<Collapse line="127" />
-		</Folding>
-	</File>
-	<File name="primitive_curve.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="687" topLine="13" />
-		</Cursor>
-	</File>
-	<File name="collision_detection.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="137" topLine="0" />
+			<Cursor1 position="655" topLine="10" />
 		</Cursor>
 	</File>
 	<File name="furnitures.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2814" topLine="45" />
+			<Cursor1 position="2814" topLine="35" />
 		</Cursor>
+	</File>
+	<File name="primitive_curve.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="687" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="33426" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="81" />
+			<Collapse line="99" />
+			<Collapse line="128" />
+			<Collapse line="151" />
+			<Collapse line="180" />
+			<Collapse line="240" />
+			<Collapse line="254" />
+			<Collapse line="280" />
+			<Collapse line="309" />
+			<Collapse line="317" />
+			<Collapse line="323" />
+			<Collapse line="325" />
+			<Collapse line="340" />
+			<Collapse line="342" />
+			<Collapse line="365" />
+			<Collapse line="387" />
+			<Collapse line="389" />
+			<Collapse line="406" />
+			<Collapse line="419" />
+			<Collapse line="423" />
+			<Collapse line="447" />
+			<Collapse line="472" />
+			<Collapse line="509" />
+			<Collapse line="518" />
+			<Collapse line="561" />
+			<Collapse line="565" />
+			<Collapse line="601" />
+			<Collapse line="609" />
+			<Collapse line="614" />
+			<Collapse line="623" />
+			<Collapse line="633" />
+			<Collapse line="638" />
+			<Collapse line="644" />
+			<Collapse line="650" />
+			<Collapse line="658" />
+			<Collapse line="673" />
+			<Collapse line="679" />
+			<Collapse line="706" />
+			<Collapse line="742" />
+			<Collapse line="746" />
+			<Collapse line="753" />
+			<Collapse line="757" />
+			<Collapse line="766" />
+			<Collapse line="773" />
+			<Collapse line="782" />
+			<Collapse line="787" />
+			<Collapse line="796" />
+			<Collapse line="801" />
+			<Collapse line="810" />
+			<Collapse line="815" />
+			<Collapse line="825" />
+			<Collapse line="833" />
+			<Collapse line="844" />
+			<Collapse line="850" />
+			<Collapse line="857" />
+			<Collapse line="874" />
+			<Collapse line="876" />
+			<Collapse line="983" />
+			<Collapse line="1058" />
+			<Collapse line="1060" />
+			<Collapse line="1090" />
+			<Collapse line="1092" />
+			<Collapse line="1098" />
+			<Collapse line="1107" />
+			<Collapse line="1109" />
+			<Collapse line="1121" />
+			<Collapse line="1160" />
+			<Collapse line="1168" />
+			<Collapse line="1175" />
+			<Collapse line="1182" />
+			<Collapse line="1213" />
+			<Collapse line="1324" />
+		</Folding>
 	</File>
 </CodeBlocks_layout_file>

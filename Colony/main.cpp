@@ -36,7 +36,7 @@ GLfloat lookY = eyeY;
 GLfloat lookZ = eyeZ-15;
 
 float sun_dist=700, sun_x=0, sun_y=sun_dist, sun_z=0, sun_theta=90;
-float sun_color[]={1.0,1.0,1.0}, sun_cur_color[]={1.0,1.0,1.0};
+float sun_color[]= {1.0,1.0,1.0}, sun_cur_color[]= {1.0,1.0,1.0};
 bool sun_move=true, sun_boost=false;
 float sun_light_intensity=1.0, cur_sun_light_intensity=sun_light_intensity;
 
@@ -66,7 +66,7 @@ bool floor_calculation=true;
 // Rotation and exploration
 float x_, z_, r, theta, dx, dz, dx_norm, dz_norm, r_=1, turn_angle_step=5, height_diff_one_less, height_diff_thresh_dist;
 int speed_ind=4, speed_range=7;
-float speed_arr[]={0.025,0.05,0.1,0.2,0.5,1,2,4,8};
+float speed_arr[]= {0.025,0.05,0.1,0.2,0.5,1,2,4,8};
 
 const float playerHeight=7, playerWidth=1, pre_climb_thresh=2, dist_thresh=speed_arr[speed_ind]*5;
 bool third_person_view=false, bumped=false, bump_down=false, hands_up=false;
@@ -80,7 +80,8 @@ extern int num_cur_points;
 // Extras
 void field(float f_width=100, float f_height=1, float f_length=100, float posX=0, float posY=0, float posZ=0, texture_id tex=FIELD1)
 {
-    if(floor_calculation) add_floor_height(0,0,0, 0,-1,0, f_width,f_height,f_length);
+    if(floor_calculation)
+        add_floor_height(0,0,0, 0,-1,0, f_width,f_height,f_length);
 
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,texture_ids[tex]);
@@ -350,12 +351,12 @@ void roads( float rd_length=500, float rd_width=20, bool mirrored=false)
         }
         glPopMatrix();
 
-    //    glPushMatrix();
-    //    glRotatef(90, 0,1,0);
-    //    glScalef(rd_width, rd_height*1.5, rd_length);
-    //    glTranslatef(-0.5,0,-0.5);
-    //    cube(0.5,0.5,0.5,false,128, rd_width,rd_height*1.5,rd_length, texture_size[ROAD2]);
-    //    glPopMatrix();
+        //    glPushMatrix();
+        //    glRotatef(90, 0,1,0);
+        //    glScalef(rd_width, rd_height*1.5, rd_length);
+        //    glTranslatef(-0.5,0,-0.5);
+        //    cube(0.5,0.5,0.5,false,128, rd_width,rd_height*1.5,rd_length, texture_size[ROAD2]);
+        //    glPopMatrix();
 
         glDisable(GL_TEXTURE_2D);
     }
@@ -388,12 +389,16 @@ void forest(float posX=0, float posY=0, float posZ=0, bool mirrored=false)
         for(int j=0; j<column; j++)
         {
             int seed=rand()%tree_type;
-            if(seed==0) tree_1(tree_width,tree_height,bush_width,bush_height, posX-j*dist_trees-dist_trees/2,0,posZ+i*dist_trees+dist_trees/2);
-            else if(seed==1) tree_2(tree_width,tree_height,bush_width,bush_height, posX-j*dist_trees-dist_trees/2,0,posZ+i*dist_trees+dist_trees/2);
-            else if(seed==2) tree_3(tree_width,2*tree_height+(rand()%10),2*bush_width,3*bush_height, posX-j*dist_trees-dist_trees/2,0,posZ+i*dist_trees+dist_trees/2);
+            if(seed==0)
+                tree_1(tree_width,tree_height,bush_width,bush_height, posX-j*dist_trees-dist_trees/2,0,posZ+i*dist_trees+dist_trees/2);
+            else if(seed==1)
+                tree_2(tree_width,tree_height,bush_width,bush_height, posX-j*dist_trees-dist_trees/2,0,posZ+i*dist_trees+dist_trees/2);
+            else if(seed==2)
+                tree_3(tree_width,2*tree_height+(rand()%10),2*bush_width,3*bush_height, posX-j*dist_trees-dist_trees/2,0,posZ+i*dist_trees+dist_trees/2);
 
             // if mirrored don't draw all trees
-            if(mirrored & (j>1)) break;
+            if(mirrored & (j>1))
+                break;
         }
     }
 }
@@ -418,23 +423,32 @@ void building_1(float posX=0, float posY=0, float posZ=0, texture_id wall_tex=WA
     for(int i=0; i<f; i++)
     {
         room(posX-40,posY+i*floor_height,posZ,40,40,roof_r,true,0,true,true,10,false,true,true,false, true,true,true,true, -1,1, TILE2,wall_tex);
-        if(!mirrored) furniture_settings_1(posX-40,posY+i*floor_height+1,posZ,40,40,0);
-        if(!mirrored) stair_room(posX,posY+i*floor_height,posZ,20,40,1,40,flr_st,0, TILE2,wall_tex);
+        if(!mirrored)
+            furniture_settings_1(posX-40,posY+i*floor_height+1,posZ,40,40,0);
+        if(!mirrored)
+            stair_room(posX,posY+i*floor_height,posZ,20,40,1,40,flr_st,0, TILE2,wall_tex);
         room(posX+40,posY+i*floor_height,posZ,40,40,roof_r,true,0,true,true,10,false,false,true,true, true,true,true,true, -1,1, TILE2,wall_tex);
-        if(flr_st) top_wall_light(GL_LIGHT4,light1, 1,0.5, posX,posY+(i+1)*floor_height,posZ+15);
-        if(!mirrored) furniture_settings_1(posX+40,posY+i*floor_height+1,posZ,40,40,90);
+        if(flr_st)
+            top_wall_light(GL_LIGHT4,light1, 1,0.5, posX,posY+(i+1)*floor_height,posZ+15);
+        if(!mirrored)
+            furniture_settings_1(posX+40,posY+i*floor_height+1,posZ,40,40,90);
 
-        if(!mirrored) room(posX-30,posY+i*floor_height,posZ-40,60,40,roof_r,true,0,true,true,10,false,false,false,false, false,false,true,true, -1,1, TILE2,wall_tex);
-        if(!mirrored) furniture_settings_2(posX-30,posY+i*floor_height+1,posZ-40,60,40, mirrored);
-        if(!mirrored) furniture_settings_2(posX+30,posY+i*floor_height+1,posZ-40,60,40, mirrored);
+        if(!mirrored)
+            room(posX-30,posY+i*floor_height,posZ-40,60,40,roof_r,true,0,true,true,10,false,false,false,false, false,false,true,true, -1,1, TILE2,wall_tex);
+        if(!mirrored)
+            furniture_settings_2(posX-30,posY+i*floor_height+1,posZ-40,60,40, mirrored);
+        if(!mirrored)
+            furniture_settings_2(posX+30,posY+i*floor_height+1,posZ-40,60,40, mirrored);
         room(posX+30,posY+i*floor_height,posZ-40,60,40,roof_r,true,0,true,true,10,false,false,false,false, false,true,true,false, -1,1, TILE2,wall_tex);
 
         wall(posX,posY+i*floor_height,posZ-40,90,60,floor_height,40,1, false,false,0,0, false,0,0, wall_tex);
-        if(floor_calculation) add_floor_height(posX,posY,posZ, 0,i*floor_height,-40, 1,floor_height,40);
+        if(floor_calculation)
+            add_floor_height(posX,posY,posZ, 0,i*floor_height,-40, 1,floor_height,40);
         if(!flr_st)
         {
             wall(posX,posY+i*floor_height,posZ+20,0,40,floor_height,40,1,true,false,20,7,false,0,0, wall_tex);
-            if(floor_calculation) add_floor_height(posX,posY,posZ, 0,i*floor_height,20, 40,floor_height,1);
+            if(floor_calculation)
+                add_floor_height(posX,posY,posZ, 0,i*floor_height,20, 40,floor_height,1);
         }
 
         flr_st=false;
@@ -443,13 +457,15 @@ void building_1(float posX=0, float posY=0, float posZ=0, texture_id wall_tex=WA
 
     float roof_r_height=5;
     room(posX+40,posY+f*floor_height,posZ, 40,40,false,true,0,false,false,0,false,false,false,false, true,true,false,false,roof_r_height,1, TILE2,wall_tex);
-    if(!mirrored) room(posX-40,posY+f*floor_height,posZ, 40,40,false,true,0,false,false,0,false,false,false,false, true,false,false,true,roof_r_height,1, TILE2,wall_tex);
+    if(!mirrored)
+        room(posX-40,posY+f*floor_height,posZ, 40,40,false,true,0,false,false,0,false,false,false,false, true,false,false,true,roof_r_height,1, TILE2,wall_tex);
     room(posX,posY+f*floor_height,posZ-40, 120,40,false,true,0,false,false,0,false,false,false,false, false,true,true,true,roof_r_height,1, TILE2,wall_tex);
 
     // fence
     float fence_height=10;
     room(posX,posY-1,posZ-5, 150,120, false,false,0,false,false,0, false,false,false,false, false,true,true,true, fence_height,1, TILE2,FENCE1);
-    if(!mirrored) room(posX+45,posY-1,posZ-5, 60,120, false,false,0,false,false,0, false,false,false,false, true,false,false,false, fence_height,1, TILE2,FENCE1);
+    if(!mirrored)
+        room(posX+45,posY-1,posZ-5, 60,120, false,false,0,false,false,0, false,false,false,false, true,false,false,false, fence_height,1, TILE2,FENCE1);
     room(posX-45,posY-1,posZ-5, 60,120, false,false,0,false,false,0, false,false,false,false, true,false,false,false, fence_height,1, TILE2,FENCE1);
 }
 
@@ -464,7 +480,8 @@ void school(float posX=0, float posY=0, float posZ=0, bool mirrored=false)
     float fence_width=2*num_cls_rm*cls_width+str_room_width+extra_gap, fence_length=cls_len+cor_len+field_len+2*extra_gap;
     float field_width=250, front_half_fence=(fence_width-fence_door_gap)/2;
 
-    if(!mirrored) room(posX,posY-1,posZ, fence_width,fence_length, false,false,0, false,false,0,false,false,false,false, false,true,true,true, fence_height,1, NONE,BRICK);
+    if(!mirrored)
+        room(posX,posY-1,posZ, fence_width,fence_length, false,false,0, false,false,0,false,false,false,false, false,true,true,true, fence_height,1, NONE,BRICK);
     room(posX-(front_half_fence+fence_door_gap)/2,posY-1,posZ, front_half_fence,fence_length, false,false,0, false,false,0,false,false,false,false, true,false,false,false, fence_height,1, NONE,BRICK);
     room(posX+(front_half_fence+fence_door_gap)/2,posY-1,posZ, front_half_fence,fence_length, false,false,0, false,false,0,false,false,false,false, true,false,false,false, fence_height,1, NONE,BRICK);
 
@@ -477,8 +494,10 @@ void school(float posX=0, float posY=0, float posZ=0, bool mirrored=false)
     // field
     float field_z_tr=45;
 
-    if(!mirrored) field(field_width/2,1,field_len, posX-extra_gap-field_width/4,posY+0.1,posZ+field_z_tr, FOOTBALL_FIELD_1_LH);
-    if(!mirrored) field(field_width/2,1,field_len, posX-extra_gap+field_width/4,posY+0.1,posZ+field_z_tr, FOOTBALL_FIELD_1_RH);
+    if(!mirrored)
+        field(field_width/2,1,field_len, posX-extra_gap-field_width/4,posY+0.1,posZ+field_z_tr, FOOTBALL_FIELD_1_LH);
+    if(!mirrored)
+        field(field_width/2,1,field_len, posX-extra_gap+field_width/4,posY+0.1,posZ+field_z_tr, FOOTBALL_FIELD_1_RH);
     goal_post(20,10,0.5, posX-extra_gap-(field_width/2-15.86),posY,posZ+field_z_tr, 90);
     goal_post(20,10,0.5, posX-extra_gap+(field_width/2-15.5),posY,posZ+field_z_tr, 90);
 
@@ -490,28 +509,34 @@ void school(float posX=0, float posY=0, float posZ=0, bool mirrored=false)
     for(int i=0; i<storied; i++)
     {
         stair_room(posX,posY+i*floor_height,fPosZ, str_width,str_room_width,1,str_room_len, str_flr,0, FLOOR1,TILE2);
-        if(!str_flr) room(posX,posY+i*floor_height,fPosZ, str_room_width,str_room_len, false,false,0,false,false,0, false,false,false,false, true,false,false,false, 5,1, FLOOR1,FLOOR1);
+        if(!str_flr)
+            room(posX,posY+i*floor_height,fPosZ, str_room_width,str_room_len, false,false,0,false,false,0, false,false,false,false, true,false,false,false, 5,1, FLOOR1,FLOOR1);
 
-        if(str_flr) top_wall_light(GL_LIGHT5,light1, 1,0.5, posX,(i+1)*floor_height,fPosZ+str_room_len/2-8);
+        if(str_flr)
+            top_wall_light(GL_LIGHT5,light1, 1,0.5, posX,(i+1)*floor_height,fPosZ+str_room_len/2-8);
 
         for(int j=0; j<num_cls_rm; j++)
         {
-            if(j==num_cls_rm-1) last_cls=true;
+            if(j==num_cls_rm-1)
+                last_cls=true;
 
             float rPosX=(cls_width+str_room_width)/2+j*cls_width;
 
             room(posX+rPosX,posY+i*floor_height,rPosZ, mid_wall,cls_len, false,true,0,true,true,10, false,false,false,false, true,false,true,false, -1,1, FLOOR1,TILE2);
             room(posX+rPosX+(mid_wall+side_wall)/2,posY+i*floor_height,rPosZ, side_wall,cls_len, false,true,0,false,false,10, true,false,false,false, true,true,true,false, -1,1, FLOOR1,TILE2);
             room(posX+rPosX-(mid_wall+side_wall)/2,posY+i*floor_height,rPosZ, side_wall,cls_len, false,true,0,false,false,10, true,false,false,false, true,false,true,true, -1,1, FLOOR1,TILE2);
-            if(str_flr && j==0 && !mirrored) furniture_settings_4(posX+rPosX,posY+i*floor_height+1,rPosZ, cls_len,cls_width,90);
-            else if(!mirrored) furniture_settings_3(posX+rPosX,posY+i*floor_height+1,rPosZ, cls_width,cls_len,0);
+            if(str_flr && j==0 && !mirrored)
+                furniture_settings_4(posX+rPosX,posY+i*floor_height+1,rPosZ, cls_len,cls_width,90);
+            else if(!mirrored)
+                furniture_settings_3(posX+rPosX,posY+i*floor_height+1,rPosZ, cls_width,cls_len,0);
 
             room(posX+rPosX,posY+i*floor_height,rPosZ+(cls_len+cor_len)/2, cls_width,cor_len,false,true,0,false,false,10, false,false,false,false, true,last_cls,false,false, cor_height,1, FLOOR1,FLOOR1);
 
             room(posX-rPosX,posY+i*floor_height,rPosZ, mid_wall,cls_len, false,true,0,true,true,10, false,false,false,false, true,false,true,false, -1,1, FLOOR1,TILE2);
             room(posX-rPosX+(mid_wall+side_wall)/2,posY+i*floor_height,rPosZ, side_wall,cls_len, false,true,0,false,false,10, true,false,false,false, true,true,true,false, -1,1, FLOOR1,TILE2);
             room(posX-rPosX-(mid_wall+side_wall)/2,posY+i*floor_height,rPosZ, side_wall,cls_len, false,true,0,false,false,10, true,false,false,false, true,false,true,true, -1,1, FLOOR1,TILE2);
-            if(!mirrored) furniture_settings_3(posX-rPosX,posY+i*floor_height+1,rPosZ, cls_width,cls_len,0);
+            if(!mirrored)
+                furniture_settings_3(posX-rPosX,posY+i*floor_height+1,rPosZ, cls_width,cls_len,0);
 
             room(posX-rPosX,posY+i*floor_height,rPosZ+(cls_len+cor_len)/2, cls_width,cor_len,false,true,0,false,false,10, false,false,false,false, true,false,false,last_cls, cor_height,1, FLOOR1,FLOOR1);
             last_cls=false;
@@ -526,7 +551,8 @@ void school(float posX=0, float posY=0, float posZ=0, bool mirrored=false)
     room(posX-(num_cls_rm*cls_width+str_room_width)/2,posY+storied*floor_height,fPosZ, num_cls_rm*cls_width,str_room_len, false,true,0,false,false,0, false,false,false,false, true,false,false,true, 5,1, FLOOR1,FLOOR1);
 
     float back_r_len=cls_len+cor_len-str_room_len;
-    if(!mirrored) room(posX,posY+storied*floor_height,fPosZ-(str_room_len+back_r_len)/2, 2*num_cls_rm*cls_width+str_room_width,back_r_len, false,true,0,false,false,0, false,false,false,false, false,true,true,true, 5,1, FLOOR1,FLOOR1);
+    if(!mirrored)
+        room(posX,posY+storied*floor_height,fPosZ-(str_room_len+back_r_len)/2, 2*num_cls_rm*cls_width+str_room_width,back_r_len, false,true,0,false,false,0, false,false,false,false, false,true,true,true, 5,1, FLOOR1,FLOOR1);
 
 }
 
@@ -567,7 +593,8 @@ void the_scene()
     forest(-15,0,15);
 
     field(1000,1,1000);
-    if(!wired) sky(750);
+    if(!wired)
+        sky(750);
 }
 
 // callbacks and helping functions
@@ -606,7 +633,7 @@ static void display(void)
     if(third_person_view)
     {
         gluLookAt(eyeX-dx/speed_arr[speed_ind]*t_p_v_cam_dist,eyeY+t_p_v_cam_height,eyeZ-dz/speed_arr[speed_ind]*t_p_v_cam_dist,
-                   lookX,lookY,lookZ, 0,1,0);
+                  lookX,lookY,lookZ, 0,1,0);
     }
     else
     {
@@ -636,7 +663,8 @@ static void display(void)
         glPopMatrix();
 
         // target cross
-        if(target_on) target_();
+        if(target_on)
+            target_();
         the_player();
 
         // axes
@@ -651,11 +679,11 @@ static void display(void)
     if(editor_mode)
     {
 
-    // Additional light
+        // Additional light
         light(GL_LIGHT3,0,20,20);
 //        light(GL_LIGHT3,0,250,0,false,15,0.2,0);
 
-    //    building_1(0,0,0);
+        //    building_1(0,0,0);
 
 
         // Axes
@@ -688,14 +716,21 @@ void movement_animation()
     z_=lookZ-eyeZ;
     r=sqrt(x_*x_+z_*z_);
 
-    if(x_==0 && z_>0) theta = 90;
-    else if(x_==0 && z_<0) theta = -90;
-    else if(z_==0 && x_>0) theta = 0;
-    else if(z_==0 && x_<0) theta = 180;
-    else if(z_==0 && x_==0) theta = 0;
-    else theta=atan(z_/x_) * 180 / PI;
+    if(x_==0 && z_>0)
+        theta = 90;
+    else if(x_==0 && z_<0)
+        theta = -90;
+    else if(z_==0 && x_>0)
+        theta = 0;
+    else if(z_==0 && x_<0)
+        theta = 180;
+    else if(z_==0 && x_==0)
+        theta = 0;
+    else
+        theta=atan(z_/x_) * 180 / PI;
 
-    if((z_>0 && theta<0) || (z_<0 && theta>0)) theta += 180;
+    if((z_>0 && theta<0) || (z_<0 && theta>0))
+        theta += 180;
 
     dx = r_*cos(theta * PI / 180) * move_const;
     dz = r_*sin(theta * PI / 180) * move_const;
@@ -827,8 +862,10 @@ static void mouse_move(int x, int y)
         lookZ=r*sin(theta * PI / 180)+eyeZ;
     }
 
-    if(y>prev_y+move_thresh) lookY-=move_step;
-    else if(y<prev_y-move_thresh) lookY+=move_step;
+    if(y>prev_y+move_thresh)
+        lookY-=move_step;
+    else if(y<prev_y-move_thresh)
+        lookY+=move_step;
 
     prev_x=x;
     prev_y=y;
@@ -1009,8 +1046,10 @@ static void key(unsigned char key, int x, int y)
 
     case 'e':
         editor_mode = !editor_mode;
-        if(editor_mode) speed_ind=0;
-        else speed_ind=speed_range-1;
+        if(editor_mode)
+            speed_ind=0;
+        else
+            speed_ind=speed_range-1;
     }
 
     glutPostRedisplay();
@@ -1082,10 +1121,12 @@ static void idle(void)
     if(sun_move)
     {
         float d_theta=0.05;
-        if(sun_boost) d_theta=2;
+        if(sun_boost)
+            d_theta=2;
 
         sun_theta -= d_theta;
-        if(sun_theta<=-270) sun_theta=90;
+        if(sun_theta<=-270)
+            sun_theta=90;
         sun_x=sun_dist*cos(sun_theta*PI/180);
         sun_y=sun_dist*sin(sun_theta*PI/180);
 
@@ -1093,8 +1134,10 @@ static void idle(void)
         sun_cur_color[1] = sun_color[1]*sin(sun_theta*PI/180) + 0.25;//0.2;
         sun_cur_color[2] = sun_color[2]*sin(sun_theta*PI/180) + 0.2;
 
-        if(sun_theta<0 && sun_theta>-180) light1=true;
-        else light1=false;
+        if(sun_theta<0 && sun_theta>-180)
+            light1=true;
+        else
+            light1=false;
 //        cout<<sun_theta<<" "<<sun_x<<" "<<sun_y<<endl;
     }
 
@@ -1105,8 +1148,9 @@ static void idle(void)
 
     // Movement control
     if(state[128+'a']||state[128+'s']||state[128+'d']||state[128+'w']
-       ||state[128+'i']||state[128+'j']||state[128+'k']||state[128+'l']
-       ||state[128+'g']||state[128+'h']) movement_animation();
+            ||state[128+'i']||state[128+'j']||state[128+'k']||state[128+'l']
+            ||state[128+'g']||state[128+'h'])
+        movement_animation();
 
     // check floor
     int l=max(int((eyeY-cur_player_height)/half_floor_height), 0);
@@ -1118,7 +1162,8 @@ static void idle(void)
         // Falling down seriously
         float fall_unit=2*speed_arr[speed_ind];
         float height_from_floor=eyeY-cur_player_height - check_current_floor(eyeZ, eyeX);
-        if(height_from_floor>bump_thresh) bump_down=true;
+        if(height_from_floor>bump_thresh)
+            bump_down=true;
 
         if(height_from_floor>fall_unit)
         {
@@ -1138,7 +1183,7 @@ static void idle(void)
             {
                 cur_player_height = playerHeight/2;
                 cur_player_width = playerWidth*1.25;
-        //            cout<<playerHeight<<" "<<height_from_floor<<endl;
+                //            cout<<playerHeight<<" "<<height_from_floor<<endl;
                 bumped=true;
                 bump_down=false;
                 glutTimerFunc(350, bump_reverse, 1);
